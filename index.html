@@ -3,11 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mein Rezeptbuch - Rezepte verwalten und ansehen" />
+    <meta
+      name="description"
+      content="Mein Rezeptbuch - Rezepte verwalten und ansehen"
+    />
     <title>Mein Rezeptbuch</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/js/main.js"></script>
+    <header>
+      <h1>Mein Rezeptbuch</h1>
+    </header>
+    <main>
+      <section>
+        <p>
+          Willkommen zu meinem Rezeptbuch! Hier können Sie Ihre Lieblingsrezepte
+          speichern, verwalten und jederzeit darauf zugreifen.
+        </p>
+        <p>Fügen Sie ein neues Rezept hinzu:</p>
+        <p>
+          Backen - Kuchen, Torten, Desserts & Nachspeisen<br />Kochen -
+          Herzhafte Gerichte, Beilagen, Suppen & mehr
+        </p>
+        <article>
+          <button type="button" data-category="kochen">Kochen</button>
+          <button type="button" data-category="backen">Backen</button>
+        </article>
+        <div id="app" aria-live="polite"></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
