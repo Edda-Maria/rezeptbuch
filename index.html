@@ -28,7 +28,67 @@
           <button type="button" data-category="kochen">Kochen</button>
           <button type="button" data-category="backen">Backen</button>
         </article>
-        <div id="app" aria-live="polite"></div>
+        <div
+          id="form-container"
+          class="hidden"
+          aria-live="polite"
+          aria-hidden="true"
+        >
+          <div class="form-header">
+            <h2 id="form-title">Rezept hinzufügen</h2>
+            <div class="form-actions">
+              <button
+                type="button"
+                id="reset-form"
+                class="secondary-btn"
+                aria-label="Formular zurücksetzen"
+              >
+                Zurücksetzen
+              </button>
+              <button
+                type="button"
+                id="close-form"
+                aria-label="Formular schließen"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <form id="recipe-form">
+            <label for="recipe-name">Rezeptname:</label>
+            <input type="text" id="recipe-name" name="recipe-name" required />
+
+            <label for="recipe-time">Zubereitungszeit (Minuten):</label>
+            <input type="number" id="recipe-time" name="recipe-time" min="0" />
+
+            <div id="category-fields"></div>
+
+            <label for="recipe-ingredients">Zutaten:</label>
+            <textarea
+              id="recipe-ingredients"
+              name="recipe-ingredients"
+              required
+            ></textarea>
+
+            <label for="recipe-instructions">Zubereitung:</label>
+            <textarea
+              id="recipe-instructions"
+              name="recipe-instructions"
+              required
+            ></textarea>
+
+            <label for="recipe-image">Rezeptbild:</label>
+            <input
+              type="file"
+              id="recipe-image"
+              name="recipe-image"
+              accept="image/*"
+            />
+
+            <button type="submit">Rezept speichern</button>
+          </form>
+        </div>
       </section>
     </main>
     <script type="module" src="/src/main.js"></script>

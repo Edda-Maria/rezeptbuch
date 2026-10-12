@@ -1,0 +1,21 @@
+.hidden {
+  display: none;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #ccc;
+}
