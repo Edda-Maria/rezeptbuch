@@ -38,6 +38,11 @@ export function setupRecipeForm() {
   document.querySelectorAll("[data-category]").forEach((button) => {
     button.addEventListener("click", () => {
       activeCategory = button.dataset.category;
+      formContainer.classList.toggle("cooking", activeCategory === "cooking");
+      formContainer.classList.toggle("baking", activeCategory === "baking");
+      document.querySelectorAll("[data-category]").forEach((categoryButton) => {
+        categoryButton.classList.toggle("is-active", categoryButton === button);
+      });
       showForm();
       renderForm(activeCategory);
     });
@@ -69,7 +74,7 @@ function renderForm(category) {
     return;
   }
 
-  if (category === "kochen") {
+  if (category === "cooking") {
     title.textContent = "Rezept kochen hinzufügen";
     categoryFields.innerHTML = `
       <label>
@@ -116,7 +121,7 @@ function renderForm(category) {
     return;
   }
 
-  if (category === "backen") {
+  if (category === "baking") {
     title.textContent = "Rezept backen hinzufügen";
     categoryFields.innerHTML = `
       <label>
