@@ -3,6 +3,7 @@ export function setupRecipeForm() {
   const recipeForm = document.querySelector("#recipe-form");
   const closeButton = document.querySelector("#close-form");
   const resetButton = document.querySelector("#reset-form");
+  const categoryButtons = document.querySelectorAll("[data-category]");
 
   let activeCategory = null;
 
@@ -12,12 +13,16 @@ export function setupRecipeForm() {
 
   const hideForm = () => {
     formContainer.classList.add("hidden");
-    formContainer.setAttribute("aria-hidden", "true");
+    categoryButtons.forEach((button) => {
+      button.setAttribute("aria-expanded", "false");
+    });
   };
 
-  const showForm = () => {
+  const showForm = (activeButton) => {
     formContainer.classList.remove("hidden");
-    formContainer.setAttribute("aria-hidden", "false");
+    categoryButtons.forEach((button) => {
+      button.setAttribute("aria-expanded", String(button === activeButton));
+    });
   };
 
   const resetCurrentCategory = () => {
@@ -35,16 +40,17 @@ export function setupRecipeForm() {
     renderForm(activeCategory);
   };
 
-  document.querySelectorAll("[data-category]").forEach((button) => {
+  categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
       activeCategory = button.dataset.category;
       formContainer.classList.toggle("cooking", activeCategory === "cooking");
       formContainer.classList.toggle("baking", activeCategory === "baking");
-      document.querySelectorAll("[data-category]").forEach((categoryButton) => {
+      categoryButtons.forEach((categoryButton) => {
         categoryButton.classList.toggle("is-active", categoryButton === button);
       });
-      showForm();
+      showForm(button);
       renderForm(activeCategory);
+      document.querySelector("#form-title")?.focus();
     });
   });
 
@@ -78,7 +84,7 @@ function renderForm(category) {
     title.textContent = "Rezept kochen hinzufügen";
     categoryFields.innerHTML = `
       <label>
-        Unterkategorie
+        Unterkategorie </label>
         <select id="cooking-subcategory" name="cooking-subcategory">
           <option value="">Bitte auswählen</option>
           <option value="hauptgericht">Hauptgerichte</option>
@@ -87,7 +93,7 @@ function renderForm(category) {
           <option value="eintopf">Eintopf</option>
           <option value="custom">Benutzerdefiniert</option>
         </select>
-      </label>
+     
 
       <div id="custom-subcategory-wrap"></div>
 
@@ -124,16 +130,14 @@ function renderForm(category) {
   if (category === "baking") {
     title.textContent = "Rezept backen hinzufügen";
     categoryFields.innerHTML = `
-      <label>
-        Unterkategorie
-        <select id="baking-subcategory" name="baking-subcategory">
-          <option value="nachspeise">Nachspeisen</option>
-          <option value="muffins">Muffins</option>
-          <option value="kuchen">Kuchen</option>
-          <option value="torten">Torten</option>
-          <option value="custom">Benutzerdefiniert</option>
-        </select>
-      </label>
+  <label for="baking-subcategory">Unterkategorie</label>
+<select id="baking-subcategory" name="baking-subcategory">
+  <option value="nachspeise">Nachspeisen</option>
+  <option value="muffins">Muffins</option>
+  <option value="kuchen">Kuchen</option>
+  <option value="torten">Torten</option>
+  <option value="custom">Benutzerdefiniert</option>
+</select>
 
       <div id="custom-subcategory-wrap"></div>
 

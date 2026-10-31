@@ -10,8 +10,8 @@
     <title>Mein Rezeptbuch</title>
   </head>
   <body>
-    <header>
-      <h1>Mein Rezeptbuch</h1>
+    <header class="hero">
+      <h1 class="hero-title">Mein Rezeptbuch</h1>
     </header>
     <main>
       <section>
@@ -19,77 +19,90 @@
           Willkommen zu meinem Rezeptbuch! Hier können Sie Ihre Lieblingsrezepte
           speichern, verwalten und jederzeit darauf zugreifen.
         </p>
-        <p>Fügen Sie ein neues Rezept hinzu:</p>
-        <p>
-          Backen - Kuchen, Torten, Desserts & Nachspeisen<br />Kochen -
-          Herzhafte Gerichte, Beilagen, Suppen & mehr
-        </p>
-        <article>
-          <button type="button" data-category="cooking" class="category-btn cooking-btn">Kochen</button>
-          <button type="button" data-category="baking" class="category-btn baking-btn">Backen</button>
-        </article>
-        <div
-          id="form-container"
-          class="hidden"
-          aria-live="polite"
-          aria-hidden="true"
-        >
-          <div class="form-header">
-            <div class="form-actions">
-              <button
-                type="button"
-                id="reset-form"
-                class="secondary-btn"
-                aria-label="Formular zurücksetzen"
-              >
-                Zurücksetzen
-              </button>
-              <button
-                type="button"
-                id="close-form"
-                aria-label="Formular schließen"
-              >
-                ✕
-              </button>
-            </div>
-            <h2 id="form-title">Rezept hinzufügen</h2>
-            
+        <section>
+          <h2>Wählen Sie eine Kategorie:</h2>
+          <ul>
+            <li>Backen – Kuchen, Torten, Desserts und Nachspeisen</li>
+            <li>Kochen – Herzhafte Gerichte, Beilagen, Suppen und mehr</li>
+          </ul>
+
+          <button
+            type="button"
+            data-category="cooking"
+            aria-expanded="false"
+            aria-controls="form-container"
+            class="category-btn cooking-btn"
+          >
+            Kochen
+          </button>
+          <button
+            type="button"
+            data-category="baking"
+            aria-expanded="false"
+            aria-controls="form-container"
+            class="category-btn baking-btn"
+          >
+            Backen
+          </button>
+        </section>
+      </section>
+      <section id="form-container" class="hidden">
+        <div class="form-header">
+          <h3 id="form-title" tabindex="-1">Rezept hinzufügen</h3>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              id="reset-form"
+              class="secondary-btn"
+              aria-label="Formular zurücksetzen"
+            >
+              Zurücksetzen
+            </button>
+            <button
+              type="button"
+              id="close-form"
+              class="secondary-btn"
+              aria-label="Formular schließen"
+            >
+              <span aria-hidden="true">X</span>
+            </button>
           </div>
-
-          <form id="recipe-form">
-            <label for="recipe-name">Rezeptname:</label>
-            <input type="text" id="recipe-name" name="recipe-name" required />
-
-            <label for="recipe-time">Zubereitungszeit (Minuten):</label>
-            <input type="number" id="recipe-time" name="recipe-time" min="0" />
-
-            <div id="category-fields"></div>
-
-            <label for="recipe-ingredients">Zutaten:</label>
-            <textarea
-              id="recipe-ingredients"
-              name="recipe-ingredients"
-              required
-            ></textarea>
-
-            <label for="recipe-instructions">Zubereitung:</label>
-            <textarea
-              id="recipe-instructions"
-              name="recipe-instructions"
-              required
-            ></textarea>
-
-            <label for="recipe-image">Rezeptbild:</label>
-            <input
-              type="file"
-              id="recipe-image"
-              name="recipe-image"
-              accept="image/*"
-            />
-
-            <button type="submit">Rezept speichern</button>
-          </form>
         </div>
+
+        <form id="recipe-form">
+          <label for="recipe-name">Rezeptname:</label>
+          <input type="text" id="recipe-name" name="recipe-name" required />
+
+          <label for="recipe-time">Zubereitungszeit (Minuten):</label>
+          <input type="number" id="recipe-time" name="recipe-time" min="0" />
+
+          <div id="category-fields" aria-live="polite"></div>
+
+          <label for="recipe-ingredients">Zutaten:</label>
+          <textarea
+            id="recipe-ingredients"
+            name="recipe-ingredients"
+            required
+          ></textarea>
+
+          <label for="recipe-instructions">Zubereitung:</label>
+          <textarea
+            id="recipe-instructions"
+            name="recipe-instructions"
+            required
+          ></textarea>
+
+          <label for="recipe-image">Rezeptbild:</label>
+          <input
+            type="file"
+            id="recipe-image"
+            name="recipe-image"
+            accept="image/*"
+          />
+
+          <button type="submit" class="secondary-btn">Rezept speichern</button>
+        </form>
       </section>
     </main>
     <script type="module" src="/src/main.js"></script>

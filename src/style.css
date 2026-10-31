@@ -1,7 +1,55 @@
+:root {
+  /* Hintergründe */
+  --bg-primary: #f7f2ec;
+  --bg-secondary: #efe7de;
+
+  /* Texte */
+  --text-primary: #3e3a37;
+  --text-secondary: #6b625c;
+
+  /* Kategorien */
+  --cooking-color: #83a482;
+  --baking-color: #cd7b7b;
+
+  /* Dekoration */
+  --accent-color: #a89878;
+
+  /* Schriftarten */
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Nunito Sans", sans-serif;
+}
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 0;
+}
+.hidden {
+  display: none;
+}
 #app {
   margin-top: 1rem;
+}
+h1 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
 }
 
 button {
   margin-right: 0.5rem;
+}
+
+.hero {
+  background-image: url(assets/header-floral.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-title {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem 2rem;
+  border-radius: 8px;
 }
