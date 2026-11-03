@@ -17,6 +17,9 @@
   /* Schriftarten */
   --font-heading: "Cormorant Garamond", serif;
   --font-body: "Nunito Sans", sans-serif;
+
+  /*headerBild*/
+  --hero-image: url(assets/header-pictures/header-floral.webp);
 }
 body {
   font-family: var(--font-body);
@@ -28,28 +31,89 @@ body {
 .hidden {
   display: none;
 }
-#app {
-  margin-top: 1rem;
-}
-h1 {
-  font-family: var(--font-heading);
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-button {
-  margin-right: 0.5rem;
-}
 
 .hero {
-  background-image: url(assets/header-floral.webp);
+  background-image: var(--hero-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 25rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-border {
+  --r: 30px;
+
+  padding: 5px;
+
+  background: linear-gradient(90deg, var(--cooking-color), var(--baking-color));
+
+  mask:
+    radial-gradient(
+        circle at 0 0,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      top left,
+    radial-gradient(
+        circle at 100% 0,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      top right,
+    radial-gradient(
+        circle at 0 100%,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      bottom left,
+    radial-gradient(
+        circle at 100% 100%,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      bottom right;
+
+  mask-size: 51% 51%;
+  mask-repeat: no-repeat;
+}
+.box {
+  --r: 30px;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  mask:
+    radial-gradient(
+        circle at 0 0,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      top left,
+    radial-gradient(
+        circle at 100% 0,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      top right,
+    radial-gradient(
+        circle at 0 100%,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      bottom left,
+    radial-gradient(
+        circle at 100% 100%,
+        transparent var(--r),
+        black calc(var(--r) + 1px)
+      )
+      bottom right;
+
+  mask-size: 51% 51%;
+  mask-repeat: no-repeat;
 }
 
 .hero-title {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 1rem 2rem;
-  border-radius: 8px;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
 }
