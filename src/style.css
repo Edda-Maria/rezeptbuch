@@ -31,6 +31,21 @@ body {
 .hidden {
   display: none;
 }
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+}
 
 .hero {
   background-image: var(--hero-image);
@@ -81,7 +96,7 @@ body {
 }
 .box {
   --r: 30px;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: var(--bg-secondary);
   mask:
     radial-gradient(
@@ -113,7 +128,72 @@ body {
   mask-repeat: no-repeat;
 }
 
-.hero-title {
+main {
+  padding: 1rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+
+.category-btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.category-btn {
+  min-width: 10rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-secondary);
+
+  border: none;
+  border-radius: 0.75rem;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.category-btn svg {
+  width: 2rem;
+  height: 2rem;
+}
+.category-btn span {
   font-family: var(--font-heading);
-  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.cooking-btn {
+  border: 2px solid var(--cooking-color);
+  color: var(--cooking-color);
+}
+
+.baking-btn {
+  border: 2px solid var(--baking-color);
+  color: var(--baking-color);
+}
+.category-btn.is-active {
+  transform: scale(1.15);
+}
+.cooking-btn.is-active {
+  background-color: var(--cooking-color);
+  color: var(--bg-primary);
+  box-shadow: -4px 4px 12px var(--cooking-color);
+}
+
+.baking-btn.is-active {
+  background-color: var(--baking-color);
+  color: var(--bg-primary);
+  box-shadow: 4px 4px 12px var(--baking-color);
 }
