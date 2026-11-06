@@ -86,9 +86,9 @@ function renderForm(category) {
   if (category === "cooking") {
     title.textContent = "Rezept kochen hinzufügen";
     categoryFields.innerHTML = `
-      <label>
+      <label for="subcategory">
         Unterkategorie </label>
-        <select id="cooking-subcategory" name="cooking-subcategory">
+        <select id="subcategory" name="subcategory">
           <option value="">Bitte auswählen</option>
           <option value="hauptgericht">Hauptgerichte</option>
           <option value="beilage">Beilagen</option>
@@ -98,25 +98,25 @@ function renderForm(category) {
         </select>
      
 
-      <div id="custom-subcategory-wrap"></div>
+      <div id="custom-subcategory"></div>
 
-      <label>
-        Personenzahl
-        <input type="number" name="servings" min="1" />
-      </label>
+      <label for="servings">
+        Personenzahl</label>
+        <input type="number" id="servings" name="servings" min="1" />
+      
     `;
 
-    const subcategorySelect = document.querySelector("#cooking-subcategory");
-    const customWrap = document.querySelector("#custom-subcategory-wrap");
+    const subcategorySelect = document.querySelector("#subcategory");
+    const customWrap = document.querySelector("#custom-subcategory");
 
     if (subcategorySelect && customWrap) {
       const updateCustomCategory = () => {
         if (subcategorySelect.value === "custom") {
           customWrap.innerHTML = `
-            <label>
-              Eigene Unterkategorie
-              <input type="text" name="custom-subcategory" placeholder="z. B. Pasta" />
-            </label>
+            <label for="custom-subcategory">
+              Eigene Unterkategorie</label>
+              <input type="text" id="custom-subcategory" name="custom-subcategory" placeholder="z. B. Pasta" />
+            
           `;
           return;
         }
@@ -133,8 +133,8 @@ function renderForm(category) {
   if (category === "baking") {
     title.textContent = "Rezept backen hinzufügen";
     categoryFields.innerHTML = `
-  <label for="baking-subcategory">Unterkategorie</label>
-<select id="baking-subcategory" name="baking-subcategory">
+  <label for="subcategory">Unterkategorie</label>
+<select id="subcategory" name="subcategory">
   <option value="nachspeise">Nachspeisen</option>
   <option value="muffins">Muffins</option>
   <option value="kuchen">Kuchen</option>
@@ -142,7 +142,7 @@ function renderForm(category) {
   <option value="custom">Benutzerdefiniert</option>
 </select>
 
-      <div id="custom-subcategory-wrap"></div>
+      <div id="custom-subcategory"></div>
 
       <label for="baking-shape">Art</label>
       <select id="baking-shape" name="baking-shape">
@@ -154,17 +154,17 @@ function renderForm(category) {
       <div id="baking-details"></div>
     `;
 
-    const subcategorySelect = document.querySelector("#baking-subcategory");
-    const customWrap = document.querySelector("#custom-subcategory-wrap");
+    const subcategorySelect = document.querySelector("#subcategory");
+    const customWrap = document.querySelector("#custom-subcategory");
 
     if (subcategorySelect && customWrap) {
       const updateCustomCategory = () => {
         if (subcategorySelect.value === "custom") {
           customWrap.innerHTML = `
-            <label>
+            <label for="custom-subcategory">
               Eigene Unterkategorie
-              <input type="text" name="custom-subcategory" placeholder="z. B. Brownies" />
             </label>
+            <input type="text" id="custom-subcategory" name="custom-subcategory" placeholder="z. B. Brownies" />
           `;
           return;
         }
@@ -188,34 +188,34 @@ function renderForm(category) {
 
       if (shape === "round") {
         bakingDetails.innerHTML = `
-          <label>
-            Durchmesser (cm)
-            <input type="number" name="diameter" min="1" />
-          </label>
+          <label for="diameter">
+            Durchmesser (cm)</label>
+            <input type="number" id="diameter" name="diameter" min="1" />
+          
         `;
         return;
       }
 
       if (shape === "rectangular") {
         bakingDetails.innerHTML = `
-          <label>
+          <label for="length">
             Länge (cm)
-            <input type="number" name="side-length" min="1" />
           </label>
-          <label>
-            Breite (cm)
-            <input type="number" name="width" min="1" />
-          </label>
+          <input type="number" id="length" name="length" min="1" />
+          <label for="width">
+            Breite (cm) </label>
+            <input type="number" id="width" name="width" min="1" />
+         
         `;
         return;
       }
 
       if (shape === "pieces") {
         bakingDetails.innerHTML = `
-          <label>
-            Stückzahl
-            <input type="number" name="pieces" min="1" />
-          </label>
+          <label for="pieces">
+            Stückzahl</label>
+            <input type="number" id="pieces" name="pieces" min="1" />
+          
         `;
         return;
       }
