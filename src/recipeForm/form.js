@@ -55,6 +55,9 @@ export function setupRecipeForm() {
   });
 
   closeButton.addEventListener("click", () => {
+    categoryButtons.forEach((button) => {
+      button.classList.remove("is-active");
+    });
     hideForm();
   });
 
