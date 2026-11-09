@@ -7,6 +7,12 @@ export function setupRecipeForm() {
 
   let activeCategory = null;
 
+  const recipeNameInput = document.querySelector("#recipe-name");
+  const recipeTimeInput = document.querySelector("#recipe-time");
+  const ingredientsInput = document.querySelector("#recipe-ingredients");
+  const instructionsInput = document.querySelector("#recipe-instructions");
+  const imageInput = document.querySelector("#recipe-image");
+
   if (!formContainer || !recipeForm || !closeButton || !resetButton) {
     return;
   }
@@ -67,7 +73,37 @@ export function setupRecipeForm() {
   });
 
   recipeForm.addEventListener("submit", (event) => {
+    const subcategorySelect = document.querySelector("#subcategory");
+    const customSubcategoryInput = document.querySelector(
+      "#custom-subcategory",
+    );
+    const servingsInput = document.querySelector("#servings");
+    const bakingShapeSelect = document.querySelector("#baking-shape");
+    const diameterInput = document.querySelector("#diameter");
+    const lengthInput = document.querySelector("#length");
+    const widthInput = document.querySelector("#width");
+    const piecesInput = document.querySelector("#pieces");
     event.preventDefault();
+
+    const recipe = {
+      name: recipeNameInput.value,
+      time: recipeTimeInput.value,
+      category: activeCategory,
+      subcategory:
+        subcategorySelect.value === "custom"
+          ? customSubcategoryInput.value
+          : subcategorySelect.value,
+      servings: servingsInput ? servingsInput.value : null,
+      bakingShape: bakingShapeSelect ? bakingShapeSelect.value : null,
+      diameter: diameterInput ? diameterInput.value : null,
+      length: lengthInput ? lengthInput.value : null,
+      width: widthInput ? widthInput.value : null,
+      pieces: piecesInput ? piecesInput.value : null,
+      ingredients: ingredientsInput.value,
+      instructions: instructionsInput.value,
+      image: imageInput ? imageInput.files[0] : null,
+    };
+
     hideForm();
   });
 
