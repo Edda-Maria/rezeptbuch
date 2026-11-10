@@ -73,6 +73,9 @@ export function setupRecipeForm() {
   });
 
   recipeForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Dynamische Felder basierend auf der Kategorie abrufen
     const subcategorySelect = document.querySelector("#subcategory");
     const customSubcategoryInput = document.querySelector(
       "#custom-subcategory",
@@ -83,7 +86,6 @@ export function setupRecipeForm() {
     const lengthInput = document.querySelector("#length");
     const widthInput = document.querySelector("#width");
     const piecesInput = document.querySelector("#pieces");
-    event.preventDefault();
 
     const recipe = {
       name: recipeNameInput.value,
@@ -103,7 +105,12 @@ export function setupRecipeForm() {
       instructions: instructionsInput.value,
       image: imageInput ? imageInput.files[0] : null,
     };
-
+    console.log(recipe);
+    recipeForm.reset();
+    resetCurrentCategory();
+    categoryButtons.forEach((button) => {
+      button.classList.remove("is-active");
+    });
     hideForm();
   });
 
