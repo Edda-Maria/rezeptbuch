@@ -1,3 +1,5 @@
+import { saveRecipe } from "../storage.js";
+
 export function setupRecipeForm() {
   const formContainer = document.querySelector("#form-container");
   const recipeForm = document.querySelector("#recipe-form");
@@ -105,7 +107,8 @@ export function setupRecipeForm() {
       instructions: instructionsInput.value,
       image: imageInput ? imageInput.files[0] : null,
     };
-    console.log(recipe);
+
+    saveRecipe(recipe);
     recipeForm.reset();
     resetCurrentCategory();
     categoryButtons.forEach((button) => {
