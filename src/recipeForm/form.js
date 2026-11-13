@@ -23,6 +23,7 @@ export function setupRecipeForm() {
     formContainer.classList.add("hidden");
     categoryButtons.forEach((button) => {
       button.setAttribute("aria-expanded", "false");
+      button.classList.remove("is-active");
     });
   };
 
@@ -30,6 +31,7 @@ export function setupRecipeForm() {
     formContainer.classList.remove("hidden");
     categoryButtons.forEach((button) => {
       button.setAttribute("aria-expanded", String(button === activeButton));
+      button.classList.toggle("is-active", button === activeButton);
     });
   };
 
@@ -48,31 +50,25 @@ export function setupRecipeForm() {
     renderForm(activeCategory);
   };
 
+  const resetForm = () => {
+    recipeForm.reset();
+    resetCurrentCategory();
+  };
+
   categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
       activeCategory = button.dataset.category;
       formContainer.classList.toggle("cooking", activeCategory === "cooking");
       formContainer.classList.toggle("baking", activeCategory === "baking");
-      categoryButtons.forEach((categoryButton) => {
-        categoryButton.classList.toggle("is-active", categoryButton === button);
-      });
       showForm(button);
       renderForm(activeCategory);
       document.querySelector("#form-title")?.focus();
     });
   });
 
-  closeButton.addEventListener("click", () => {
-    categoryButtons.forEach((button) => {
-      button.classList.remove("is-active");
-    });
-    hideForm();
-  });
+  closeButton.addEventListener("click", hideForm);
 
-  resetButton.addEventListener("click", () => {
-    recipeForm.reset();
-    resetCurrentCategory();
-  });
+  resetButton.addEventListener("click", resetForm);
 
   recipeForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -96,7 +92,9 @@ export function setupRecipeForm() {
       subcategory:
         subcategorySelect.value === "custom"
           ? customSubcategoryInput.value
-          : subcategorySelect.value,
+          : subcategorySelect
+            ? subcategorySelect.value
+            : null,
       servings: servingsInput ? servingsInput.value : null,
       bakingShape: bakingShapeSelect ? bakingShapeSelect.value : null,
       diameter: diameterInput ? diameterInput.value : null,
@@ -109,15 +107,9 @@ export function setupRecipeForm() {
     };
 
     saveRecipe(recipe);
-    recipeForm.reset();
-    resetCurrentCategory();
-    categoryButtons.forEach((button) => {
-      button.classList.remove("is-active");
-    });
+    resetForm();
     hideForm();
   });
-
-  hideForm();
 }
 
 function renderForm(category) {
