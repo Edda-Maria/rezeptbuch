@@ -173,7 +173,7 @@
               class="secondary-btn"
               aria-label="Formular zurücksetzen"
             >
-              Zurücksetzen
+              <span aria-hidden="true">↺</span>
             </button>
             <button
               type="button"
@@ -187,37 +187,68 @@
         </div>
 
         <form id="recipe-form">
-          <label for="recipe-name">Rezeptname:</label>
-          <input type="text" id="recipe-name" name="recipe-name" required />
+          <div class="form-group">
+            <label for="recipe-name" class="form-label"> Rezeptname: </label>
+            <input
+              type="text"
+              class="form-fields"
+              id="recipe-name"
+              name="recipe-name"
+              required
+            />
+          </div>
 
-          <label for="recipe-time">Zubereitungszeit (Minuten):</label>
-          <input type="number" id="recipe-time" name="recipe-time" min="0" />
+          <div class="form-group">
+            <label for="recipe-time" class="form-label">
+              Zubereitungszeit (Minuten):
+            </label>
+            <input
+              type="number"
+              class="form-fields"
+              id="recipe-time"
+              name="recipe-time"
+              min="0"
+            />
+          </div>
 
           <div id="category-fields" aria-live="polite"></div>
 
-          <label for="recipe-ingredients">Zutaten:</label>
-          <textarea
-            id="recipe-ingredients"
-            name="recipe-ingredients"
-            required
-          ></textarea>
+          <div class="form-group">
+            <label for="recipe-ingredients" class="form-label">
+              Zutaten:
+            </label>
+            <textarea
+              class="form-fields"
+              id="recipe-ingredients"
+              name="recipe-ingredients"
+              required
+            ></textarea>
+          </div>
 
-          <label for="recipe-instructions">Zubereitung:</label>
-          <textarea
-            id="recipe-instructions"
-            name="recipe-instructions"
-            required
-          ></textarea>
+          <div class="form-group">
+            <label for="recipe-instructions" class="form-label">
+              Zubereitung:
+            </label>
+            <textarea
+              class="form-fields"
+              id="recipe-instructions"
+              name="recipe-instructions"
+              required
+            ></textarea>
+          </div>
 
-          <label for="recipe-image">Rezeptbild:</label>
-          <input
-            type="file"
-            id="recipe-image"
-            name="recipe-image"
-            accept="image/*"
-          />
+          <div class="form-group">
+            <label for="recipe-image" class="form-label"> Rezeptbild: </label>
+            <input
+              type="file"
+              class="form-fields"
+              id="recipe-image"
+              name="recipe-image"
+              accept="image/*"
+            />
+          </div>
 
-          <button type="submit" class="secondary-btn">Rezept speichern</button>
+          <button type="submit" class="primary-btn">Rezept speichern</button>
         </form>
       </section>
     </main>

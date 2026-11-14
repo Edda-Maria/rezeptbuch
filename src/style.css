@@ -1,7 +1,7 @@
 :root {
   /* Hintergründe */
-  --bg-primary: #f7f2ec;
-  --bg-secondary: #efe7de;
+  --bg-primary: #f8f4ef;
+  --bg-secondary: #f2ebe3;
 
   /* Texte */
   --text-primary: #3e3a37;
@@ -12,7 +12,7 @@
   --baking-color: #cd7b7b;
 
   /* Dekoration */
-  --accent-color: #a89878;
+  --accent-color: #c0a67c;
 
   /* Schriftarten */
   --font-heading: "Cormorant Garamond", serif;
@@ -21,6 +21,7 @@
   /*headerBild*/
   --hero-image: url(assets/header-pictures/header-floral.webp);
 }
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);

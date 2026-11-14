@@ -124,9 +124,10 @@ function renderForm(category) {
   if (category === "cooking") {
     title.textContent = "Rezept kochen hinzufügen";
     categoryFields.innerHTML = `
-      <label for="subcategory">
-        Unterkategorie </label>
-        <select id="subcategory" name="subcategory">
+     <div class="form-group">
+    <label for="subcategory" class="form-label">
+        Unterkategorie: </label>
+        <select id="subcategory" class="form-fields" name="subcategory">
           <option value="">Bitte auswählen</option>
           <option value="hauptgericht">Hauptgerichte</option>
           <option value="beilage">Beilagen</option>
@@ -134,28 +135,31 @@ function renderForm(category) {
           <option value="eintopf">Eintopf</option>
           <option value="custom">Benutzerdefiniert</option>
         </select>
+        </div>
      
 
-      <div id="custom-subcategory"></div>
-
-      <label for="servings">
-        Personenzahl</label>
-        <input type="number" id="servings" name="servings" min="1" />
-      
+      <div id="custom-subcategory-wrap"></div>
+<div class="form-group">
+      <label for="servings" class="form-label">
+        Personenzahl:</label>
+        <input type="number" class="form-fields" id="servings" name="servings" min="1" />
+      </div>
     `;
 
     const subcategorySelect = document.querySelector("#subcategory");
-    const customWrap = document.querySelector("#custom-subcategory");
+    const customWrap = document.querySelector("#custom-subcategory-wrap");
 
     if (subcategorySelect && customWrap) {
       const updateCustomCategory = () => {
         if (subcategorySelect.value === "custom") {
           customWrap.innerHTML = `
-            <label for="custom-subcategory">
-              Eigene Unterkategorie</label>
-              <input type="text" id="custom-subcategory" name="custom-subcategory" placeholder="z. B. Pasta" />
-            
-          `;
+          <div class="form-group">
+            <label for="custom-subcategory" class="form-label">
+              Eigene Unterkategorie:
+            </label>
+            <input type="text" class="form-fields" id="custom-subcategory" name="custom-subcategory" placeholder="z. B. Pasta" />
+          </div>
+            `;
           return;
         }
 
@@ -171,39 +175,49 @@ function renderForm(category) {
   if (category === "baking") {
     title.textContent = "Rezept backen hinzufügen";
     categoryFields.innerHTML = `
-  <label for="subcategory">Unterkategorie</label>
-<select id="subcategory" name="subcategory">
+    <div class="form-group">
+  <label for="subcategory" class="form-label">
+    Unterkategorie:
+  </label>
+<select id="subcategory" class="form-fields" name="subcategory">
   <option value="nachspeise">Nachspeisen</option>
   <option value="muffins">Muffins</option>
   <option value="kuchen">Kuchen</option>
   <option value="torten">Torten</option>
   <option value="custom">Benutzerdefiniert</option>
 </select>
+</div>
 
-      <div id="custom-subcategory"></div>
+      <div id="custom-subcategory-wrap"></div>
 
-      <label for="baking-shape">Art</label>
-      <select id="baking-shape" name="baking-shape">
+      <div class="form-group">
+      <label for="baking-shape" class="form-label">
+        Art:
+      </label>
+      <select id="baking-shape" class="form-fields" name="baking-shape">
         <option value="">Bitte auswählen</option>
         <option value="round">Runde Backform</option>
         <option value="rectangular">Eckige Backform</option>
         <option value="pieces">Stückzahl</option>
       </select>
+      </div>
       <div id="baking-details"></div>
     `;
 
     const subcategorySelect = document.querySelector("#subcategory");
-    const customWrap = document.querySelector("#custom-subcategory");
+    const customWrap = document.querySelector("#custom-subcategory-wrap");
 
     if (subcategorySelect && customWrap) {
       const updateCustomCategory = () => {
         if (subcategorySelect.value === "custom") {
           customWrap.innerHTML = `
-            <label for="custom-subcategory">
-              Eigene Unterkategorie
+          <div class="form-group">
+            <label for="custom-subcategory" class="form-label">
+              Eigene Unterkategorie:
             </label>
-            <input type="text" id="custom-subcategory" name="custom-subcategory" placeholder="z. B. Brownies" />
-          `;
+            <input type="text" class="form-fields" id="custom-subcategory" name="custom-subcategory" />
+          </div>
+            `;
           return;
         }
 
@@ -226,34 +240,42 @@ function renderForm(category) {
 
       if (shape === "round") {
         bakingDetails.innerHTML = `
-          <label for="diameter">
-            Durchmesser (cm)</label>
-            <input type="number" id="diameter" name="diameter" min="1" />
-          
-        `;
+        <div class="form-group">
+          <label for="diameter" class="form-label">
+            Durchmesser (cm)
+          </label>
+          <input type="number" class="form-fields" id="diameter" name="diameter" min="1" />
+       </div>
+          `;
         return;
       }
 
       if (shape === "rectangular") {
         bakingDetails.innerHTML = `
-          <label for="length">
+        <div class="form-group">
+          <label for="length" class="form-label">
             Länge (cm)
           </label>
-          <input type="number" id="length" name="length" min="1" />
-          <label for="width">
-            Breite (cm) </label>
-            <input type="number" id="width" name="width" min="1" />
-         
+          <input type="number" class="form-fields" id="length" name="length" min="1" />
+          </div>
+          <div class="form-group">
+          <label for="width" class="form-label">
+            Breite (cm)
+          </label>
+          <input type="number" class="form-fields" id="width" name="width" min="1" />
+          </div>
         `;
         return;
       }
 
       if (shape === "pieces") {
         bakingDetails.innerHTML = `
-          <label for="pieces">
-            Stückzahl</label>
-            <input type="number" id="pieces" name="pieces" min="1" />
-          
+        <div class="form-group">
+          <label for="pieces" class="form-label">
+            Stückzahl
+          </label>
+          <input type="number" class="form-fields" id="pieces" name="pieces" min="1" />
+        </div>
         `;
         return;
       }
