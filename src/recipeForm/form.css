@@ -15,15 +15,22 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
+.cooking .form-header {
+  border-color: var(--cooking-color);
+}
+.baking .form-header {
+  border-color: var(--baking-color);
+}
 .form-header h3 {
   margin: 0;
   text-align: center;
+  font-size: 1.5rem;
 }
 .cooking .form-header h3 {
-  color: var(--cooking-color);
+  color: var(--text-cooking-color);
 }
 .baking .form-header h3 {
-  color: var(--baking-color);
+  color: var(--text-baking-color);
 }
 
 .form-actions {
@@ -38,6 +45,20 @@
   display: flex;
   flex-direction: column;
 }
+.cooking label:has(+ :required)::after {
+  content: " *";
+  color: var(--cooking-color);
+}
+.baking label:has(+ :required)::after {
+  content: " *";
+  color: var(--baking-color);
+}
+
+label:has(+ :optional)::after {
+  content: " (optional)";
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
 .form-group {
   display: flex;
   flex-direction: column;
@@ -47,6 +68,7 @@
 
 .form-label {
   font-weight: 600;
+  font-size: 1rem;
   display: block;
   width: 100%;
   text-align: left;
@@ -58,6 +80,7 @@
   padding: 0.5rem 0.75rem;
   border: 0.1rem solid var(--accent-color);
   border-radius: 0.75rem;
+  background: var(--bg-primary);
 }
 
 textarea {
@@ -69,7 +92,7 @@ textarea {
   width: 3rem;
   height: 3rem;
   padding: 0.6rem 1rem;
-  border: 0.1rem solid var(--accent-color);
+  border: 0.15rem solid var(--accent-color);
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
@@ -81,15 +104,16 @@ textarea {
 .primary-btn {
   padding: 0.6rem 1rem;
   border-radius: 1rem;
-  color: var(--bg-primary);
-  border: none;
   cursor: pointer;
   font-weight: 600;
+  background: transparent;
 }
 .cooking .primary-btn {
-  background: var(--cooking-color);
+  color: var(--text-cooking-color);
+  border: 0.2rem solid var(--cooking-color);
 }
 
 .baking .primary-btn {
-  background: var(--baking-color);
+  color: var(--text-baking-color);
+  border: 0.2rem solid var(--baking-color);
 }
