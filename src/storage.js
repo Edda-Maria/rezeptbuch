@@ -4,3 +4,7 @@ export function saveRecipe(recipe) {
   localStorage.setItem("recipes", JSON.stringify(recipes));
   console.log(recipes);
 }
+
+export function getRecipes() {
+  return JSON.parse(localStorage.getItem("recipes")) || [];
+}
