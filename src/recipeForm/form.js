@@ -1,4 +1,5 @@
 import { saveRecipe } from "../storage.js";
+import { cookingIcon, bakingIcon } from "../icons.js";
 
 export function setupRecipeForm() {
   const formContainer = document.querySelector("#form-container");
@@ -14,6 +15,8 @@ export function setupRecipeForm() {
   const ingredientsInput = document.querySelector("#recipe-ingredients");
   const instructionsInput = document.querySelector("#recipe-instructions");
   const imageInput = document.querySelector("#recipe-image");
+
+  const formIcon = document.querySelector("#form-icon");
 
   if (!formContainer || !recipeForm || !closeButton || !resetButton) {
     return;
@@ -60,6 +63,10 @@ export function setupRecipeForm() {
       activeCategory = button.dataset.category;
       formContainer.classList.toggle("cooking", activeCategory === "cooking");
       formContainer.classList.toggle("baking", activeCategory === "baking");
+
+      formIcon.innerHTML =
+        activeCategory === "cooking" ? cookingIcon : bakingIcon;
+
       showForm(button);
       renderForm(activeCategory);
       document.querySelector("#form-title")?.focus();

@@ -1,3 +1,4 @@
+import { cookingIcon, bakingIcon } from "../icons.js";
 export function renderRecipes(recipes) {
   const recipeList = document.querySelector("#recipes");
 
@@ -10,13 +11,19 @@ export function renderRecipes(recipes) {
 
 function createRecipeCard(recipe) {
   const card = document.createElement("li");
-  card.classList.add("recipe-card");
+  const categoryIcon = recipe.category === "cooking" ? cookingIcon : bakingIcon;
   card.innerHTML = `
+  <div class="recipe-card">
+  ${
+    recipe.image
+      ? `<img src="${recipe.image}" alt="${recipe.name}">`
+      : `<div class="recipe-placeholder">${categoryIcon}</div>`
+  }
+
     <h3>${recipe.name}</h3>
     <p>Zubereitungszeit: ${recipe.time}</p>
-    <p>Zutaten: ${recipe.ingredients}</p>
-    <p>Anleitung: ${recipe.instructions}</p>
-    <img src="${recipe.image}" alt="${recipe.name}">
+    <button class="ingredients-btn" ">Zutaten</button>
+    </div>
   `;
   return card;
 }
