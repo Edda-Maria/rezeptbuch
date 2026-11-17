@@ -22,6 +22,9 @@ function renderImage(recipe, categoryIcon) {
 function createRecipeCard(recipe) {
   const card = document.createElement("li");
   const categoryIcon = recipe.category === "cooking" ? cookingIcon : bakingIcon;
+  card.addEventListener("click", () => {
+    renderRecipeLightbox(recipe);
+  });
 
   card.innerHTML = `
   <div class="recipe-card ${recipe.category}">
@@ -31,9 +34,23 @@ ${renderImage(recipe, categoryIcon)}
 <div class="recipe-content">
     <h3>${recipe.name}</h3>
     <p> ${renderField("Zubereitungszeit", recipe.time)}</p>
-    <button class="ingredients-btn" ">Zutaten</button>
+    <button class="ingredients-btn">Zutaten</button>
    </div>
     </div>
   `;
+
+  const ingredients = card.querySelector(".ingredients-btn");
+  ingredients.addEventListener("click", (event) => {
+    event.stopPropagation();
+    renderRecipeLightbox(recipe, "ingredients");
+  });
   return card;
+}
+
+export function renderRecipeLightbox(recipe, activeTab = "details") {
+  if (activeTab === "ingredients") {
+    showIngredients(recipe);
+  } else {
+    showDetails(recipe);
+  }
 }
