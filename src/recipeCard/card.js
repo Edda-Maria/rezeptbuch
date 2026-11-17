@@ -22,13 +22,17 @@ function renderImage(recipe, categoryIcon) {
 function createRecipeCard(recipe) {
   const card = document.createElement("li");
   const categoryIcon = recipe.category === "cooking" ? cookingIcon : bakingIcon;
-  card.innerHTML = `
-  <div class="recipe-card">
-${renderImage(recipe, categoryIcon)}
 
+  card.innerHTML = `
+  <div class="recipe-card ${recipe.category}">
+  <div class="recipe-media">
+${renderImage(recipe, categoryIcon)}
+</div>
+<div class="recipe-content">
     <h3>${recipe.name}</h3>
     <p> ${renderField("Zubereitungszeit", recipe.time)}</p>
     <button class="ingredients-btn" ">Zutaten</button>
+   </div>
     </div>
   `;
   return card;
