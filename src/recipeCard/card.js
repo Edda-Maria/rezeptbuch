@@ -28,14 +28,14 @@ function createRecipeCard(recipe) {
 
   card.innerHTML = `
   <div class="recipe-card ${recipe.category}">
-  <div class="recipe-media">
-${renderImage(recipe, categoryIcon)}
-</div>
-<div class="recipe-content">
-    <h3>${recipe.name}</h3>
-    <p> ${renderField("Zubereitungszeit", recipe.time)}</p>
-    <button class="ingredients-btn">Zutaten</button>
-   </div>
+    <div class="recipe-content">
+     <h3>${recipe.name}</h3>
+     <p> ${renderField("Zubereitungszeit", recipe.time)}</p>
+    </div>
+    <div class="recipe-media">
+      ${renderImage(recipe, categoryIcon)}
+      <button class="ingredients-btn">Zutaten</button>
+
     </div>
   `;
 

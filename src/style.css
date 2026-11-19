@@ -43,7 +43,7 @@ h3 {
   color: var(--text-primary);
 }
 h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(2.1rem, 5vw, 4rem);
 }
 h2 {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -150,6 +150,7 @@ li {
 .category-btn-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
@@ -211,4 +212,21 @@ li {
 .category-btn.baking-btn.is-active span,
 .category-btn.baking-btn.is-active svg {
   color: var(--text-baking-color);
+}
+
+.divider-icon svg {
+  width: 4rem;
+  height: 4rem;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.divider-line {
+  flex: 1;
+  height: 0.08rem;
+  background-color: currentColor;
 }

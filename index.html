@@ -132,20 +132,26 @@
           </div>
 
           <div class="form-group">
-            <label for="recipe-image" class="form-label"> Rezeptbild: </label>
+            <label for="recipe-image" class="upload-btn"> Rezeptbild: </label>
             <input
               type="file"
-              class="form-fields"
               id="recipe-image"
               name="recipe-image"
               accept="image/*"
+              hidden
             />
           </div>
 
           <button type="submit" class="primary-btn">Rezept speichern</button>
         </form>
       </section>
-      <div class="floral-border"></div>
+      <div class="divider" aria-hidden="true">
+        <div class="divider-line"></div>
+
+        <div id="floral-divider" class="divider-icon"></div>
+
+        <div class="divider-line"></div>
+      </div>
       <section id="recipe-list">
         <h2>Gespeicherte Rezepte</h2>
         <ul id="recipes"></ul>
